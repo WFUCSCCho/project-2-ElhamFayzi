@@ -50,7 +50,6 @@ public class Proj2 {
         // ignore first line
         inputFileNameScanner.nextLine();
 
-	// FINISH ME
         ArrayList<Player> originalPlayersList = new ArrayList<Player>();
         ArrayList<Player> copyPlayersList = new ArrayList<Player>();
 
