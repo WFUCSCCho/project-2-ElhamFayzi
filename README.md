@@ -85,6 +85,18 @@ BST vs. AVL Tree running rate (search):
 
 <img width="715" height="214" alt="image" src="https://github.com/user-attachments/assets/8a7f432c-6bc5-453e-a7e1-9cbc738b1bbb" />
 
+## Use of LLM
+
+I used ChatGPT to understand how System.nanoTime() works in Java. It provided an explanation with an example and also stated the key differences from System.currentTimeMillis().
+- Prompt: "How does 'System.nanoTime()' work in java?"
+  <img width="1262" height="639" alt="image" src="https://github.com/user-attachments/assets/cb001c0d-d2e3-4979-92dd-e24a22376912" />
+  
+  <img width="1172" height="595" alt="image" src="https://github.com/user-attachments/assets/302851ee-1a51-4ed1-a082-07223d81cb01" />
+  
+  <img width="1127" height="337" alt="image" src="https://github.com/user-attachments/assets/ebea4d5c-207b-4c70-a22b-dbdead28a573" />
+
+
+
 
 ## Submission:
 
