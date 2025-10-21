@@ -6,6 +6,8 @@
  *                             only created using the parsed data set passed to the constructor
  * @author:                    Elham Fayzi
  * @date:                      Oct 21, 2025
+ *
+ * @DataSet:                   All Time Premier League Player Statistics (https://www.kaggle.com/datasets/rishikeshkanabar/premier-league-player-statistics-updated-daily)
  ******************************************************************/
 
 public class Player implements Comparable<Player> {
