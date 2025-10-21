@@ -5,7 +5,7 @@
  *                             as well as toString(), equals(), and compareTo(). Does not have getters or setters since each object of type Player is
  *                             only created using the parsed data set passed to the constructor
  * @author:                    Elham Fayzi
- * @date:                      Sep 25, 2025
+ * @date:                      Oct 21, 2025
  ******************************************************************/
 
 public class Player implements Comparable<Player> {
@@ -38,7 +38,7 @@ public class Player implements Comparable<Player> {
     // Parameterized Constructor
     public Player(String[] data) {
         name = data[0];
-        jerseyNum = Integer.parseInt(data[1].trim());                   // FIXME: Handle the InvalidNumberFormat Exception !!!!!!!
+        jerseyNum = Integer.parseInt(data[1].trim());
         club = data[2];
         position = data[3];
         nationality = data[4];

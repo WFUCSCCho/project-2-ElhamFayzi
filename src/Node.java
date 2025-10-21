@@ -4,7 +4,7 @@
  *                             type E (which must be Comparable) along with references to its left and right child nodes. It provides constructors,
  *                             getters and setters for its fields, and a helper method.
  * @author:                    Elham Fayzi
- * @date:                      Sep 17, 2025
+ * @date:                      Oct 21, 2025
  ******************************************************************/
 
 public class Node<E extends Comparable<? super E>> {

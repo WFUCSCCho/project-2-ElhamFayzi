@@ -1,3 +1,13 @@
+/******************************************************************
+ * @file :                     AVLTree.java
+ * @description:               This class is a generic implementation of an AVL tree. It supports standard operations such as insertion, removal,
+ *                             search, and finding the minimum or maximum elements. The tree maintains its balance by performing single and double
+ *                             rotations when the heights of subtrees differ by more than one. It uses a nested AvlNode class to store elements,
+ *                             left and right children, and the node’s height.
+ * @author:                    Elham Fayzi
+ * @date:                      Oct 21, 2025
+ ******************************************************************/
+
 // AvlTree class
 //
 // CONSTRUCTION: with no initializer

@@ -1,27 +1,42 @@
+/******************************************************************
+ * @file :                     Proj2.java
+ * @description:               This class reads a dataset of Player objects from a file, stores them in ArrayLists, and measures the insertion
+ *                             and search performance of both a BST and an AVL tree using sorted and randomized input. It uses System.nanoTime()
+ *                             to calculate operation times in nanoseconds, converts it to milliseconds, and prints the results to the console.
+ *                             The program also appends the timing data to an output.txt CSV file.
+ * @author:                    Elham Fayzi
+ * @date:                      Oct 21, 2025
+ ******************************************************************/
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Collections;
 
 public class Proj2 {
+
+    // Populate a BST with a list of Player objects
     public static void populateBST(BST<Player> BST, ArrayList<Player> players) {
         for (Player player : players) {
             BST.insert(player);
         }
     }
 
+    // Populate an AVL tree with a list of Player objects
     public static void populateAVL(AVLTree<Player> AVLTree, ArrayList<Player> players) {
         for (Player player : players) {
             AVLTree.insert(player);
         }
     }
 
+    // Search each Player in a BST
     public static void searchForEachPlayersBST(BST<Player> BST, ArrayList<Player> players) {
         for (Player player : players) {
             BST.search(player);
         }
     }
 
+    // Search each Player in an AVL tree
     public static void searchForEachPlayersAVL(AVLTree<Player> AVLTree, ArrayList<Player> players) {
         for (Player player : players) {
             AVLTree.contains(player);
@@ -53,6 +68,7 @@ public class Proj2 {
         ArrayList<Player> originalPlayersList = new ArrayList<Player>();
         ArrayList<Player> copyPlayersList = new ArrayList<Player>();
 
+        // Read each line and create Player objects (deep copy for separate lists)
         for (int i = 0; i < numLines; i++) {
             if (!inputFileNameScanner.hasNextLine()) {
                 System.err.println("The entered numLines is greater than the number of lines in file (" + i + " lines exist in the input file)");
@@ -61,17 +77,18 @@ public class Proj2 {
             String[] line = inputFileNameScanner.nextLine().toLowerCase().split(",");
             try {
                 originalPlayersList.add(new Player(line));                      // Create different player instances for each list separately to make
-                copyPlayersList.add(new Player(line));                          // sure that items of both lists don't refer to the same objects.
+                copyPlayersList.add(new Player(line));                          // sure items of both lists don't point to same objects.
             } catch (Exception e) {
                 System.out.println("Line Number " + (i + 1) + " has an invalid format.");
             }
         }
-
         inputFileNameScanner.close();
 
         long startTime;
         long endTime;
+
         //============================
+        // Measure insertion times for sorted list
         Collections.sort(copyPlayersList);
 
         BST<Player> bstFromSortedList = new BST<Player>();
@@ -86,8 +103,8 @@ public class Proj2 {
         endTime = System.nanoTime();
         double avlFromSortedListInsertTime = (endTime - startTime) / 1_000_000.0;
 
-
         //============================
+        // Measure insertion times for randomized list
         Collections.shuffle(copyPlayersList);
 
         BST<Player> bstFromRandomList = new BST<Player>();
@@ -101,8 +118,9 @@ public class Proj2 {
         populateAVL(avlFromRandomList, copyPlayersList);
         endTime = System.nanoTime();
         double avlFromRandomListInsertTime = (endTime - startTime) / 1_000_000.0;
-        //=============================
 
+        //=============================
+        // Measure search times using the original list
         startTime = System.nanoTime();
         searchForEachPlayersBST(bstFromSortedList, originalPlayersList);
         endTime = System.nanoTime();
@@ -140,7 +158,8 @@ public class Proj2 {
         System.out.println("AVL (random list): " + avlFromRandomListSearchTime);
         System.out.println();
 
-
+        //============================
+        // Write results to output file (append if exists)
         File file = new File("output.txt");
         boolean fileExists = file.exists();
 

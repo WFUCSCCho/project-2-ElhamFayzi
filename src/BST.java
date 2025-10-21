@@ -4,7 +4,7 @@
  *                             It supports standard operations such as insert, remove, search, clear, and size. This class also implements
  *                             Iterable and provides an in-order iterator that traverses the tree in-order using a stack.
  * @author:                    Elham Fayzi
- * @date:                      Sep 17, 2025
+ * @date:                      Oct 21, 2025
  ******************************************************************/
 
 import java.util.Iterator;
