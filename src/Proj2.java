@@ -1,5 +1,4 @@
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Collections;
@@ -56,41 +55,105 @@ public class Proj2 {
         ArrayList<Player> copyPlayersList = new ArrayList<Player>();
 
         for (int i = 0; i < numLines; i++) {
-
+            if (!inputFileNameScanner.hasNextLine()) {
+                System.err.println("The entered numLines is greater than the number of lines in file (" + i + " lines exist in the input file)");
+                System.exit(1);
+            }
             String[] line = inputFileNameScanner.nextLine().toLowerCase().split(",");
-            Player player;
             try {
-                player = new Player(line);
-                originalPlayersList.add(player);
-                copyPlayersList.add(player);
+                originalPlayersList.add(new Player(line));                      // Create different player instances for each list separately to make
+                copyPlayersList.add(new Player(line));                          // sure that items of both lists don't refer to the same objects.
             } catch (Exception e) {
                 System.out.println("Line Number " + (i + 1) + " has an invalid format.");
             }
         }
 
+        inputFileNameScanner.close();
+
+        long startTime;
+        long endTime;
         //============================
         Collections.sort(copyPlayersList);
 
-        BST<Player> sortedBST = new BST<Player>();
-        populateBST(sortedBST, copyPlayersList);
+        BST<Player> bstFromSortedList = new BST<Player>();
+        startTime = System.nanoTime();
+        populateBST(bstFromSortedList, copyPlayersList);
+        endTime = System.nanoTime();
+        double bstFromSortedListInsertTime = (endTime - startTime) / 1_000_000.0;
 
-        AVLTree<Player> sortedAVLTree = new AVLTree<Player>();
-        populateAVL(sortedAVLTree, copyPlayersList);
+        AVLTree<Player> avlFromSortedList = new AVLTree<Player>();
+        startTime = System.nanoTime();
+        populateAVL(avlFromSortedList, copyPlayersList);
+        endTime = System.nanoTime();
+        double avlFromSortedListInsertTime = (endTime - startTime) / 1_000_000.0;
+
 
         //============================
         Collections.shuffle(copyPlayersList);
-        BST<Player> randomBST = new BST<Player>();
-        populateBST(randomBST, copyPlayersList);
 
-        AVLTree<Player> randomAVLTree = new AVLTree<Player>();
-        populateAVL(randomAVLTree, copyPlayersList);
+        BST<Player> bstFromRandomList = new BST<Player>();
+        startTime = System.nanoTime();
+        populateBST(bstFromRandomList, copyPlayersList);
+        endTime = System.nanoTime();
+        double bstFromRandomListInsertTime = (endTime - startTime) / 1_000_000.0;
+
+        AVLTree<Player> avlFromRandomList = new AVLTree<Player>();
+        startTime = System.nanoTime();
+        populateAVL(avlFromRandomList, copyPlayersList);
+        endTime = System.nanoTime();
+        double avlFromRandomListInsertTime = (endTime - startTime) / 1_000_000.0;
         //=============================
 
-        searchForEachPlayersBST(sortedBST, originalPlayersList);
-        searchForEachPlayersAVL(sortedAVLTree, originalPlayersList);
-        searchForEachPlayersBST(randomBST, originalPlayersList);
-        searchForEachPlayersAVL(randomAVLTree, originalPlayersList);
+        startTime = System.nanoTime();
+        searchForEachPlayersBST(bstFromSortedList, originalPlayersList);
+        endTime = System.nanoTime();
+        double bstFromSortedListSearchTime = (endTime - startTime) / 1_000_000.0;
+
+        startTime = System.nanoTime();
+        searchForEachPlayersAVL(avlFromSortedList, originalPlayersList);
+        endTime = System.nanoTime();
+        double avlFromSortedListSearchTime = (endTime - startTime) / 1_000_000.0;
+
+        startTime = System.nanoTime();
+        searchForEachPlayersBST(bstFromRandomList, originalPlayersList);
+        endTime = System.nanoTime();
+        double bstFromRandomListSearchTime = (endTime - startTime) / 1_000_000.0;
+
+        startTime = System.nanoTime();
+        searchForEachPlayersAVL(avlFromRandomList, originalPlayersList);
+        endTime = System.nanoTime();
+        double avlFromRandomListSearchTime = (endTime - startTime) / 1_000_000.0;
+
+        //============================
+
+        System.out.println("\n Insertion Times in Milliseconds for " + numLines + " lines");
+        System.out.println("============================================");
+        System.out.println("BST (sorted list): " + bstFromSortedListInsertTime);
+        System.out.println("AVL (sorted list): " + avlFromSortedListInsertTime);
+        System.out.println("BST (random list): " + bstFromRandomListInsertTime);
+        System.out.println("AVL (random list): " + avlFromRandomListInsertTime);
+
+        System.out.println("\n Search Times in Milliseconds for " + numLines + " lines");
+        System.out.println("============================================");
+        System.out.println("BST (sorted list): " + bstFromSortedListSearchTime);
+        System.out.println("AVL (sorted list): " + avlFromSortedListSearchTime);
+        System.out.println("BST (random list): " + bstFromRandomListSearchTime);
+        System.out.println("AVL (random list): " + avlFromRandomListSearchTime);
+        System.out.println();
 
 
+        File file = new File("output.txt");
+        boolean fileExists = file.exists();
+
+        FileOutputStream outputStream = new FileOutputStream(file, true);
+        PrintWriter writer = new PrintWriter(outputStream);
+        if (!fileExists) {
+            writer.println("numLines, BST(Sorted Insertion), AVL(SortedInsertion), BST(Random Insertion), AVL(Random Insertion), BST(Sorted Search), AVL(Sorted Search), BST(Random Search), AVL(Random Search)\n");
+        }
+
+        writer.println(numLines + "," + bstFromSortedListInsertTime + "," + avlFromSortedListInsertTime + "," + bstFromRandomListInsertTime + "," + avlFromRandomListInsertTime + "," + bstFromSortedListSearchTime + "," + avlFromSortedListSearchTime + "," + bstFromRandomListSearchTime + "," + avlFromRandomListSearchTime);
+
+        writer.flush();
+        writer.close();
     }
 }
