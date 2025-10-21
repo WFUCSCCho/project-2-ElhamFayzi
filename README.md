@@ -104,3 +104,5 @@ I ___strongly suggest___ that you carefully think through your strategy before j
 ∗ @date: October 21, 2025
 ∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗/
 ```
+
+**Dataset used: All Time Premier League Player Statistics (https://www.kaggle.com/datasets/rishikeshkanabar/premier-league-player-statistics-updated-daily)**
