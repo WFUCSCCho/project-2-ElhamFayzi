@@ -1,7 +1,7 @@
 public class TestAvl {
     // Test program
     public static void main( String [ ] args ) {
-        AvlTree<Integer> t = new AvlTree<>();
+        AVLTree<Integer> t = new AVLTree<>();
         final int SMALL = 40;
         final int NUMS = 1000000;  // must be even
         final int GAP = 37;
