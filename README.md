@@ -68,23 +68,23 @@ Using your favorite graphing software (e.g., MS Excel or Google Sheets), plot th
 
 BST vs. AVL Tree running time (insertion):
 
-<img width="362" height="215" alt="image" src="https://github.com/user-attachments/assets/ec070fb9-f823-472e-a90d-eefe5baee482" />
-
-<img width="352" height="207" alt="image" src="https://github.com/user-attachments/assets/95ecbf2e-16ff-4df0-974f-d15c0d99a2d6" />
+<img width="717" height="212" alt="image" src="https://github.com/user-attachments/assets/951d5c3b-3695-4152-8465-e8e82a6835b0" />
 
 
 BST vs. AVL Tree running time (search):
 
-<img width="362" height="211" alt="image" src="https://github.com/user-attachments/assets/59f99192-276d-4d78-af40-c8751a196bf8" />
-
-<img width="356" height="210" alt="image" src="https://github.com/user-attachments/assets/f83121a3-1911-4d55-986a-fd630a807768" />
+<img width="714" height="213" alt="image" src="https://github.com/user-attachments/assets/b8eed5e2-bd96-4d8e-a18b-517d2d038c06" />
 
 
 BST vs. AVL Tree running rate (insertion):
-(insert here)
+
+<img width="716" height="211" alt="image" src="https://github.com/user-attachments/assets/bd5ebb14-14a4-4514-ad2f-94a4757daec5" />
+
 
 BST vs. AVL Tree running rate (search):
-(insert here)
+
+<img width="715" height="214" alt="image" src="https://github.com/user-attachments/assets/8a7f432c-6bc5-453e-a7e1-9cbc738b1bbb" />
+
 
 ## Submission:
 
