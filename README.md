@@ -70,7 +70,7 @@ BST vs. AVL Tree running time (insertion):
 
 <img width="362" height="215" alt="image" src="https://github.com/user-attachments/assets/ec070fb9-f823-472e-a90d-eefe5baee482" />
 
-<img width="356" height="211" alt="image" src="https://github.com/user-attachments/assets/9145f11e-f485-47fd-9de0-2c60902c2699" />
+<img width="352" height="207" alt="image" src="https://github.com/user-attachments/assets/95ecbf2e-16ff-4df0-974f-d15c0d99a2d6" />
 
 
 BST vs. AVL Tree running time (search):
